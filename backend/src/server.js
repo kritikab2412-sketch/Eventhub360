@@ -49,7 +49,7 @@ app.get('/api/health', async (req, res) => {
     try {
         await prisma.$queryRaw`SELECT 1`;
         res.status(200).json({
-            status: 'success',
+            status: 'UP',
             message: 'Server is healthy.',
             timestamp: new Date().toISOString(),
             database: 'connected'
@@ -57,7 +57,7 @@ app.get('/api/health', async (req, res) => {
     } catch (err) {
         logger.error(`Health check database failure: ${err.message}`);
         res.status(500).json({
-            status: 'error',
+            status: 'DOWN',
             message: 'Server health degraded: Database is unreachable.',
             error: err.message
         });
