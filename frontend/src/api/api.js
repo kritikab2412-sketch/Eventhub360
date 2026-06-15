@@ -1,7 +1,10 @@
 import axios from 'axios';
 
+export const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001/api/v1';
+export const BASE_ASSET_URL = BASE_URL.replace(/\/api\/v1\/?$/, '').replace(/\/api\/?$/, '');
+
 const API = axios.create({
-  baseURL: 'http://localhost:5001/api/v1',
+  baseURL: BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },
@@ -72,7 +75,7 @@ API.interceptors.response.use(
       }
 
       try {
-        const response = await axios.post('http://localhost:5001/api/v1/auth/refresh-token', {
+        const response = await axios.post(`${BASE_URL}/auth/refresh-token`, {
           token: refreshToken,
         });
 

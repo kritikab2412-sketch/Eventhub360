@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Mail, Phone, MapPin, Briefcase, DollarSign, Upload, FileText, Check } from 'lucide-react';
-import API from '../api/api';
+import API, { BASE_ASSET_URL } from '../api/api';
 
 const Profile = () => {
   const { user } = useSelector((state) => state.auth);
@@ -136,7 +136,7 @@ const Profile = () => {
         <div className="glass-panel" style={{ padding: '32px', textAlign: 'center' }}>
           <div className="profile-photo-container" style={{ position: 'relative', width: '120px', height: '120px', margin: '0 auto 20px', borderRadius: '50%', overflow: 'hidden', border: '3px solid var(--accent-cyan)', boxShadow: '0 0 15px rgba(0, 242, 254, 0.3)' }}>
             {profilePhoto ? (
-              <img src={`http://localhost:5001${profilePhoto.image_url}`} alt="Profile" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <img src={`${BASE_ASSET_URL}${profilePhoto.image_url}`} alt="Profile" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             ) : (
               <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyItems: 'center', justifyContent: 'center', background: 'var(--bg-tertiary)', fontSize: '48px', color: 'var(--text-secondary)' }}>
                 {user?.name?.charAt(0).toUpperCase()}
@@ -276,7 +276,7 @@ const Profile = () => {
                       <FileText size={20} style={{ color: 'var(--accent-violet)' }} />
                       <div>
                         <div style={{ fontSize: '14px', fontWeight: '600' }}>{doc.file_type.replace('_', ' ').toUpperCase()}</div>
-                        <a href={`http://localhost:5001${doc.image_url}`} target="_blank" rel="noreferrer" style={{ fontSize: '12px', color: 'var(--accent-cyan)', textDecoration: 'none' }}>View Document</a>
+                        <a href={`${BASE_ASSET_URL}${doc.image_url}`} target="_blank" rel="noreferrer" style={{ fontSize: '12px', color: 'var(--accent-cyan)', textDecoration: 'none' }}>View Document</a>
                       </div>
                     </div>
                     <span className="badge badge-approved" style={{ fontSize: '11px' }}>Attached</span>
