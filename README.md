@@ -119,7 +119,7 @@ ems-project/
 
 ## 🌐 Deployment URLs
 
-*   **Live Frontend**: [Vercel Deployment URL] (e.g., `https://eventhub360.vercel.app`)
+*   **Live Frontend**: [https://frontend-livid-sigma-59.vercel.app](https://frontend-livid-sigma-59.vercel.app)
 *   **Live Backend API**: [Render Web Service URL]/api/v1 (e.g., `https://ems-backend-server.onrender.com/api/v1`)
 *   **Cloud Database**: Managed via Neon PostgreSQL
 
