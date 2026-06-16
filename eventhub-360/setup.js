@@ -41,6 +41,8 @@ async function setup() {
     console.log(`Reading schema DDL from ${ddlPath}...`);
     const sql = fs.readFileSync(ddlPath, 'utf8');
 
+    console.log('Resetting public schema to clear old tables...');
+    await client.query('DROP SCHEMA public CASCADE; CREATE SCHEMA public;');
     console.log('Applying DDL schema (creating tables, indexes, audit triggers)...');
     await client.query(sql);
     console.log('DDL applied successfully! All tables and triggers are ready.');
